@@ -26,4 +26,7 @@ set(SOS_LIB_NAME jansson)
 project(${SOS_LIB_NAME} CXX C ASM)
 
 set(SOS_LIB_INCLUDE_DIRECTORIES jansson/src)
+
+install(FILES ./jansson/src/jansson.h ./jansson_api.h ./jansson_config.h DESTINATION include/jansson)
+
 include( ${CMAKE_SOURCE_DIR}/${SOS_BUILD_CONFIG}.cmake )
