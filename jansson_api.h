@@ -1,7 +1,6 @@
 #ifndef JANSSON_API_H
 #define JANSSON_API_H
 
-
 #include "jansson.h"
 
 #ifdef __cplusplus
@@ -11,29 +10,26 @@ extern "C" {
 typedef struct {
 
     const char * git_hash;
-    json_t * (*object)();
-    json_t * (*array)();
-    json_t * (*string)(const char *value);
-    json_t * (*stringn)(const char *value, size_t len);
-    json_t * (*string_nocheck)(const char *value);
-    json_t * (*stringn_nocheck)(const char *value, size_t len);
-    json_t * (*integer)(json_int_t value);
-    json_t * (*real)(double value);
-    json_t * (*true)();
-    json_t * (*false)();
-    json_t * (*null)();
-
+	 json_t * (*create_object)();
+	 json_t * (*create_array)();
+	 json_t * (*create_string)(const char *value);
+	 json_t * (*create_stringn)(const char *value, size_t len);
+	 json_t * (*create_string_nocheck)(const char *value);
+	 json_t * (*create_stringn_nocheck)(const char *value, size_t len);
+	 json_t * (*create_integer)(json_int_t value);
+	 json_t * (*create_real)(double value);
+	 json_t * (*create_true)();
+	 json_t * (*create_false)();
+	 json_t * (*create_null)();
 
     void (*remove)(json_t *json);
-
 
     /* getters, setters, manipulation */
 
     void (*object_seed)(size_t seed);
     size_t (*object_size)(const json_t *object);
     json_t * (*object_get)(const json_t *object, const char *key) JANSSON_ATTRS(warn_unused_result);
-    int (*object_set_new)(json_t *object, const char *key, json_t *value);
-    int (*object_set_new_nocheck)(json_t *object, const char *key, json_t *value);
+	 int (*object_set)(json_t *object, const char *key, json_t *value);
     int (*object_del)(json_t *object, const char *key);
     int (*object_clear)(json_t *object);
     int (*object_update)(json_t *object, json_t *other);
@@ -51,9 +47,9 @@ typedef struct {
 
     size_t (*array_size)(const json_t *array);
     json_t * (*array_get)(const json_t *array, size_t index) JANSSON_ATTRS(warn_unused_result);
-    int (*array_set_new)(json_t *array, size_t index, json_t *value);
-    int (*array_append_new)(json_t *array, json_t *value);
-    int (*array_insert_new)(json_t *array, size_t index, json_t *value);
+	 int (*array_set)(json_t *array, size_t index, json_t *value);
+	 int (*array_append)(json_t *array, json_t *value);
+	 int (*array_insert)(json_t *array, size_t index, json_t *value);
     int (*array_remove)(json_t *array, size_t index);
     int (*array_clear)(json_t *array);
     int (*array_extend)(json_t *array, json_t *other);
@@ -118,6 +114,12 @@ typedef struct {
     int (*dumpfd)(const json_t *json, int output, size_t flags);
     int (*dump_file)(const json_t *json, const char *path, size_t flags);
     int (*dump_callback)(const json_t *json, json_dump_callback_t callback, void *data, size_t flags);
+
+	 /* utility */
+	 void (*decref)(json_t * json);
+	 void (*decrefp)(json_t ** json);
+	 json_t * (*incref)(json_t * json);
+
 
 
 } jansson_api_t;

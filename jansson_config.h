@@ -23,7 +23,7 @@
 
 /* If __atomic builtins are available they will be used to manage
    reference counts of json_t. */
-#define JSON_HAVE_ATOMIC_BUILTINS 1
+#define JSON_HAVE_ATOMIC_BUILTINS 0
 
 /* If __atomic builtins are not available we try using __sync builtins
    to manage reference counts of json_t. */
