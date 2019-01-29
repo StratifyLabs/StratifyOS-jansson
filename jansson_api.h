@@ -28,7 +28,7 @@ typedef struct {
 
     void (*object_seed)(size_t seed);
     size_t (*object_size)(const json_t *object);
-    json_t * (*object_get)(const json_t *object, const char *key) JANSSON_ATTRS(warn_unused_result);
+	 json_t * (*object_get)(const json_t *object, const char *key);
 	 int (*object_set)(json_t *object, const char *key, json_t *value);
     int (*object_del)(json_t *object, const char *key);
     int (*object_clear)(json_t *object);
@@ -46,7 +46,7 @@ typedef struct {
 
 
     size_t (*array_size)(const json_t *array);
-    json_t * (*array_get)(const json_t *array, size_t index) JANSSON_ATTRS(warn_unused_result);
+	 json_t * (*array_get)(const json_t *array, size_t index);
 	 int (*array_set)(json_t *array, size_t index, json_t *value);
 	 int (*array_append)(json_t *array, json_t *value);
 	 int (*array_insert)(json_t *array, size_t index, json_t *value);
@@ -71,9 +71,9 @@ typedef struct {
 
     /* pack, unpack */
 
-    json_t * (*pack)(const char *fmt, ...) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*pack_ex)(json_error_t *error, size_t flags, const char *fmt, ...) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*vpack_ex)(json_error_t *error, size_t flags, const char *fmt, va_list ap) JANSSON_ATTRS(warn_unused_result);
+	 json_t * (*pack)(const char *fmt, ...);
+	 json_t * (*pack_ex)(json_error_t *error, size_t flags, const char *fmt, ...);
+	 json_t * (*vpack_ex)(json_error_t *error, size_t flags, const char *fmt, va_list ap);
 
 
     int (*unpack)(json_t *root, const char *fmt, ...);
@@ -82,8 +82,8 @@ typedef struct {
 
     /* sprintf */
 
-    json_t * (*sprintf)(const char *fmt, ...) JANSSON_ATTRS(warn_unused_result, format(printf, 1, 2));
-    json_t * (*vsprintf)(const char *fmt, va_list ap) JANSSON_ATTRS(warn_unused_result, format(printf, 1, 0));
+	 json_t * (*sprintf)(const char *fmt, ...);
+	 json_t * (*vsprintf)(const char *fmt, va_list ap);
 
 
     /* equality */
@@ -93,22 +93,22 @@ typedef struct {
 
     /* copying */
 
-    json_t * (*copy)(json_t *value) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*deep_copy)(const json_t *value) JANSSON_ATTRS(warn_unused_result);
+	 json_t * (*copy)(json_t *value);
+	 json_t * (*deep_copy)(const json_t *value);
 
 
     /* decoding */
 
-    json_t * (*loads)(const char *input, size_t flags, json_error_t *error) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*loadb)(const char *buffer, size_t buflen, size_t flags, json_error_t *error) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*loadf)(FILE *input, size_t flags, json_error_t *error) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*loadfd)(int input, size_t flags, json_error_t *error) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*load_file)(const char *path, size_t flags, json_error_t *error) JANSSON_ATTRS(warn_unused_result);
-    json_t * (*load_callback)(json_load_callback_t callback, void *data, size_t flags, json_error_t *error) JANSSON_ATTRS(warn_unused_result);
+	 json_t * (*loads)(const char *input, size_t flags, json_error_t *error);
+	 json_t * (*loadb)(const char *buffer, size_t buflen, size_t flags, json_error_t *error);
+	 json_t * (*loadf)(FILE *input, size_t flags, json_error_t *error);
+	 json_t * (*loadfd)(int input, size_t flags, json_error_t *error);
+	 json_t * (*load_file)(const char *path, size_t flags, json_error_t *error);
+	 json_t * (*load_callback)(json_load_callback_t callback, void *data, size_t flags, json_error_t *error);
 
     /* encoding */
 
-    char * (*dumps)(const json_t *json, size_t flags) JANSSON_ATTRS(warn_unused_result);
+	 char * (*dumps)(const json_t *json, size_t flags);
     size_t (*dumpb)(const json_t *json, char *buffer, size_t size, size_t flags);
     int (*dumpf)(const json_t *json, FILE *output, size_t flags);
     int (*dumpfd)(const json_t *json, int output, size_t flags);

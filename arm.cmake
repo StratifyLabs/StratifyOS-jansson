@@ -29,7 +29,8 @@ set(SOS_LIB_SOURCELIST
 	jansson_private_config.h
 	jansson_config.h
 	jansson_api.c
-	jansson_api.h)
+	jansson_api.h
+	StratifyOS-jansson.cmake)
 
 
 # kernel release and debug configurations
