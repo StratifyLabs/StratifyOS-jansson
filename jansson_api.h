@@ -1,11 +1,14 @@
 #ifndef JANSSON_API_H
 #define JANSSON_API_H
 
+#include <mcu/types.h>
 #include "jansson.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
+
+#define JANSSON_API_T 1
 
 typedef struct {
 
@@ -120,11 +123,15 @@ typedef struct {
 	 void (*decrefp)(json_t ** json);
 	 json_t * (*incref)(json_t * json);
 
-
-
 } jansson_api_t;
 
 extern const jansson_api_t jansson_api;
+
+#if defined __link
+#define JANSSON_API_REQUEST &jansson_api
+#else
+#define JANSSON_API_REQUEST MCU_API_REQUEST_CODE('j','s','o','n')
+#endif
 
 #ifdef __cplusplus
 }
