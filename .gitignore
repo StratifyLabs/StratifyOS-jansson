@@ -1,6 +1,6 @@
 
-cmake_arm/
+cmake*_arm/
 .vscode/settings.json
 *.user
 jansson/
-cmake_link/
+cmake*_link/
