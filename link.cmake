@@ -25,15 +25,15 @@ set(SOURCES
 )
 
 
-set(SOS_LIB_SOURCELIST
+set(SOS_SOURCELIST
 	${SOURCES}
 	jansson_private_config.h
 	jansson_config.h
 	jansson_api.c
 	jansson_api.h)
 
-set(SOS_LIB_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR} ${SOURCES_PREFIX})
-set(SOS_LIB_OPTION "")
-set(SOS_LIB_TYPE release)
-set(SOS_LIB_ARCH link)
+set(SOS_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR} ${SOURCES_PREFIX})
+set(SOS_OPTION "")
+set(SOS_CONFIG release)
+set(SOS_ARCH link)
 include(${SOS_TOOLCHAIN_CMAKE_PATH}/sos-lib.cmake)
