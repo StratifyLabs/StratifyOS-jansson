@@ -24,7 +24,7 @@ set(SOURCES
 )
 
 
-set(SOS_LIB_SOURCELIST
+set(SOS_SOURCELIST
 	${SOURCES}
 	jansson_private_config.h
 	jansson_config.h
@@ -34,11 +34,11 @@ set(SOS_LIB_SOURCELIST
 
 
 # kernel release and debug configurations
-set(SOS_LIB_TYPE release)
-set(SOS_LIB_OPTION kernel)
-set(SOS_LIB_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR} ${SOURCES_PREFIX})
+set(SOS_CONFIG release)
+set(SOS_OPTION kernel)
+set(SOS_INCLUDE_DIRECTORIES ${CMAKE_SOURCE_DIR} ${SOURCES_PREFIX})
 include(${SOS_TOOLCHAIN_CMAKE_PATH}/sos-lib-std.cmake)
 
-set(SOS_LIB_TYPE debug)
+set(SOS_CONFIG debug)
 include(${SOS_TOOLCHAIN_CMAKE_PATH}/sos-lib-std.cmake)
 
