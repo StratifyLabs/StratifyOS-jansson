@@ -3,7 +3,11 @@
 
 
 const jansson_api_t jansson_api = {
-	.git_hash = SOS_GIT_HASH,
+	.sos_api = {
+		.name = "jansson",
+		.version = 0x0001,
+		.git_hash = SOS_GIT_HASH,
+	},
 	.create_object = json_object,
 	.create_array = json_array,
 	.create_string = json_string,

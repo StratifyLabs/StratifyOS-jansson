@@ -1,7 +1,7 @@
 #ifndef JANSSON_API_H
 #define JANSSON_API_H
 
-#include <mcu/types.h>
+#include <sos/api/sos_api.h>
 #include "jansson.h"
 
 #ifdef __cplusplus
@@ -11,8 +11,7 @@ extern "C" {
 #define JANSSON_API_T 1
 
 typedef struct {
-
-	const char * git_hash;
+	sos_api_t sos_api;
 	json_t * (*create_object)();
 	json_t * (*create_array)();
 	json_t * (*create_string)(const char *value);
